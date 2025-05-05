@@ -24,12 +24,12 @@ repos:
     -   id: black
     exclude: '^tests/test_data/.*$'
 
-# Flake8 - for code linting
--   repo: https://github.com/pycqa/flake8
-    rev: '7.2.0'
-    hooks:
-    -   id: flake8
-    exclude: '^tests/$'
+# # Flake8 - for code linting #removed as conflicts with black.
+# -   repo: https://github.com/pycqa/flake8
+#     rev: '7.2.0'
+#     hooks:
+#     -   id: flake8
+#     exclude: '^tests/$'
 
 # NumPyDoc - for docstring validation
 -   repo: https://github.com/numpy/numpydoc

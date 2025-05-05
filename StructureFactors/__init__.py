@@ -1,0 +1,1 @@
+from StructureFactors.structure import Structure
