@@ -1,0 +1,90 @@
+## What system to build the project with? I.e. Setuptools, Wheel, Poetry, etc.
+## Using `setuptools` here.
+
+[build-system]
+    requires = [
+        "setuptools>=60",
+        "setuptools-scm>=8.0"
+    ]
+    build-backend = "setuptools.build_meta"
+
+[project]
+    # Project information
+    name = "StructureFactors"
+    version = "0.1.0"
+    description = "A package for calculating the structure factor and intensity for given crystal periodicities."
+    readme = "README.md"
+    license = {file = "LICENSE"}
+    keywords = ["NEXAFS", "XANES", "Near", "Edge", "X-ray", "Absorption", "Fine", "Structure", "Spectroscopy", "Optical Data", "XAS", "Synchrotron"]
+    authors = [
+        {name = "Matthew Gebert", email="matthew.gebert@monash.edu"},
+        ]
+    maintainers = [
+        {name = "Matthew Gebert", email="matthew.gebert@monash.edu"},
+    ]
+
+    # Project compatibility:
+    requires-python = ">=3.10"
+    dependencies = [
+        # "pyNexafs",
+        # "kkcalc"
+        "numpy",
+        "overrides", # for type hinting
+        "scipy",
+        "xdrlib3" # function bindings for reading binary data from mda files
+    ]
+
+[project.urls]
+    # Website, documentation and other continuous integration URLS.
+    code = "https://github.com/xraysoftmat/pyNexafs"
+    documentation = "https://pyNexafs.readthedocs.io/en/latest/"
+
+[project.optional-dependencies]
+    gui = [
+        "matplotlib",
+        "pandas",
+        "pyqt6",
+        "pyyaml",
+    ]
+    dev = [
+        "pre-commit",
+        "commitizen",
+        "commitlint",
+        "python-semantic-release",
+        "numpydoc",
+        "pytest",
+        "sphinx",
+        "sphinx-rtd-theme",
+    ]
+    docs = [
+        "sphinx",
+        "sphinx-rtd-theme",
+        "numpydoc",
+    ]
+
+# [tool.setuptools.packages.find] # All the following settings are optional:
+#     where = ["."]  # Root directory
+#     include = ["pyNexafs*"]
+#     exclude = []
+
+[tool.numpydoc_validation]
+    checks = [
+        "all",   # report on all checks, except the below
+        "EX01",
+        "SA01",
+        "ES01",
+        "GL08", # TODO: ignore docstring check until numpydoc 1.9.0 is released (where constructors are supported).
+        "PR02", # TODO: ignore parameter check until numpydoc 1.9.0 is released (where properties setter methods are supported).
+    ]
+
+    exclude = [
+        'tests*',
+    ]
+
+    override_SS05 = [
+        "^Process",
+        "^Nexafs",
+        "^Xanes",
+        "^Xas",
+        "",
+    ]
