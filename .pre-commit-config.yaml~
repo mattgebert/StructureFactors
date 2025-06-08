@@ -9,11 +9,7 @@ repos:
     rev: v5.0.0
     hooks:
     -   id: check-added-large-files
-        exclude: |
-          (?x)^(
-            tests/test_data/.*\.mda|
-            StructureFactors/Examples/.*\.ipynb
-          )$
+        exclude: '^tests/test_data/.*\.mda$' | '^StructureFactors/Examples/.*\.ipynb$'
     -   id: check-toml
     -   id: check-yaml
     -   id: end-of-file-fixer
